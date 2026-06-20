@@ -183,9 +183,10 @@ if (typeof window !== 'undefined' && window.customElements) {
         ? `max-width:${this._config.max_width}px;margin:0 auto;`
         : '';
       style.textContent =
-        `:host{display:block;${maxWidthRule}}ha-card{overflow:hidden;background:` +
+        `:host{display:block;height:100%;${maxWidthRule}}` +
+        'ha-card{overflow:hidden;height:100%;display:flex;align-items:center;justify-content:center;background:' +
         this._config.colors.background +
-        '}canvas{width:100%;display:block}';
+        '}canvas{width:100%;height:100%;object-fit:contain;display:block}';
       const card = document.createElement('ha-card');
       this._canvas = document.createElement('canvas');
       const H = this._config.height;
