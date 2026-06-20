@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { background:#111; margin:0; padding:20px; font-family:Arial; }
+    .card { width:800px; max-width:100%; margin:0 0 30px; }
+    h2 { color:#ccc; }
+    /* ha-card is undefined here; render it as a plain block */
+    ha-card { display:block; }
+  </style>
+</head>
+<body>
+  <h2>Config minimale</h2>
+  <div class="card" id="a"></div>
+  <h2>Config personnalisée (couleurs / géométrie / animation off au départ)</h2>
+  <div class="card" id="b"></div>
+
+  <script type="module">
+    import '../jauge-vintage-card.js';
+
+    // Faux hass dont la valeur change toutes les 2 s
+    const hass = { states: { 'sensor.temp': { state: '20' } } };
+    let v = 20;
+    setInterval(() => {
+      v = 5 + Math.round(Math.random() * 35);
+      hass.states['sensor.temp'] = { state: String(v) };
+      for (const el of [cardA, cardB]) el.hass = hass;
+    }, 2000);
+
+    const cardA = document.createElement('jauge-vintage-card');
+    cardA.setConfig({ entity: 'sensor.temp' });
+    document.getElementById('a').appendChild(cardA);
+    cardA.hass = hass;
+
+    const cardB = document.createElement('jauge-vintage-card');
+    cardB.setConfig({
+      entity: 'sensor.temp',
+      title: 'SALON', unit: '°F', min: -10, max: 60,
+      colors: { background: '#001018', title: '#33ccff', needle: ['#003355', '#00aaff', '#aaffff'], needle_glow: '#00aaff' },
+      geometry: { degrees_per_unit: 3, major_every: 5 },
+      animation: { enabled: true, stiffness: 0.02, damping: 0.85 },
+    });
+    document.getElementById('b').appendChild(cardB);
+    cardB.hass = hass;
+  </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+# Config minimale
+type: custom:jauge-vintage-card
+entity: sensor.air_quality_temperature
+
+# ---
+
+# Config entièrement personnalisée
+type: custom:jauge-vintage-card
+entity: sensor.living_room_temperature
+title: SALON
+unit: "°C"
+min: 0
+max: 45
+decimals: 1
+height: 350
+colors:
+  background: "#000000"
+  needle: ["#990000", "#ff3300", "#ffff66"]
+  needle_glow: "#ff3300"
+  value: "#ffffff"
+  value_glow: "#ffffff"
+  title: "#ffd400"
+  ticks: "#b4b4b4"
+geometry:
+  radius: 430
+  center_x: -180
+  center_y: null
+  degrees_per_unit: 4
+  major_every: 2
+  major_length: 78
+  minor_length: 18
+  value_font_size: 110
+  title_font_size: 34
+  unit_font_size: 40
+  tick_font_min: 36
+  tick_font_max: 60
+animation:
+  enabled: true
+  stiffness: 0.01
+  damping: 0.92
