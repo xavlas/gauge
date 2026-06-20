@@ -15,6 +15,8 @@
   <div class="card" id="a"></div>
   <h2>Config personnalisée (couleurs / géométrie / animation off au départ)</h2>
   <div class="card" id="b"></div>
+  <h2>Largeur réduite (max_width: 300, centrée dans un conteneur de 800px)</h2>
+  <div class="card" id="c"></div>
 
   <script type="module">
     import '../jauge-vintage-card.js';
@@ -43,6 +45,11 @@
     });
     document.getElementById('b').appendChild(cardB);
     cardB.hass = hass;
+
+    const cardC = document.createElement('jauge-vintage-card');
+    cardC.setConfig({ entity: 'sensor.temp', max_width: 300 });
+    document.getElementById('c').appendChild(cardC);
+    cardC.hass = hass;
   </script>
 </body>
 </html>

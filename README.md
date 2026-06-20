@@ -33,6 +33,7 @@ Une carte Lovelace personnalisée pour Home Assistant qui affiche un thermomètr
 | `min` / `max` | number | `0` / `45` | Bornes de l'échelle de graduations |
 | `decimals` | number | `1` | Décimales de la valeur centrale |
 | `height` | number | `350` | Hauteur de la carte en px (repère logique) |
+| `max_width` | number\|null | `null` | Largeur maximale en px ; la carte est centrée si définie. `null` = pleine largeur du conteneur |
 | `colors.background` | string | `#000000` | Fond |
 | `colors.needle` | string[] (2–3) | `["#990000","#ff3300","#ffff66"]` | Dégradé de l'aiguille |
 | `colors.needle_glow` | string | `#ff3300` | Lueur de l'aiguille |
@@ -78,6 +79,7 @@ min: 0
 max: 45
 decimals: 1
 height: 350
+max_width: 400
 colors:
   background: "#000000"
   needle: ["#990000", "#ff3300", "#ffff66"]

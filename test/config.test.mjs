@@ -14,6 +14,7 @@ test('applies defaults when only entity is given', () => {
   assert.equal(c.max, 45);
   assert.equal(c.decimals, 1);
   assert.equal(c.height, 350);
+  assert.equal(c.max_width, null);
   assert.equal(c.colors.background, '#000000');
   assert.deepEqual(c.colors.needle, ['#990000', '#ff3300', '#ffff66']);
   assert.equal(c.geometry.radius, 430);
@@ -29,11 +30,13 @@ test('user values override defaults, including nested sections', () => {
   const c = normalizeConfig({
     entity: 'sensor.temp',
     max: 100,
+    max_width: 400,
     colors: { title: '#00ff00' },
     geometry: { radius: 500 },
     animation: { enabled: false },
   });
   assert.equal(c.max, 100);
+  assert.equal(c.max_width, 400);
   assert.equal(c.colors.title, '#00ff00');
   assert.equal(c.colors.background, '#000000'); // untouched default
   assert.equal(c.geometry.radius, 500);

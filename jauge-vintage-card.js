@@ -5,6 +5,7 @@ const DEFAULTS = {
   max: 45,
   decimals: 1,
   height: 350,
+  max_width: null,
   colors: {
     background: '#000000',
     needle: ['#990000', '#ff3300', '#ffff66'],
@@ -167,8 +168,11 @@ if (typeof window !== 'undefined' && window.customElements) {
       if (this._root) return;
       this._root = this.attachShadow({ mode: 'open' });
       const style = document.createElement('style');
+      const maxWidthRule = this._config.max_width
+        ? `max-width:${this._config.max_width}px;margin:0 auto;`
+        : '';
       style.textContent =
-        ':host{display:block}ha-card{overflow:hidden;background:' +
+        `:host{display:block;${maxWidthRule}}ha-card{overflow:hidden;background:` +
         this._config.colors.background +
         '}canvas{width:100%;display:block}';
       const card = document.createElement('ha-card');
