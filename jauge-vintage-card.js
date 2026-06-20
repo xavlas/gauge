@@ -155,6 +155,17 @@ if (typeof window !== 'undefined' && window.customElements) {
       return Math.max(1, Math.round((this._config?.height || 350) / 50));
     }
 
+    getGridOptions() {
+      const rows = Math.max(1, Math.round((this._config?.height || 350) / 56));
+      return {
+        columns: 12,
+        rows,
+        min_columns: 4,
+        max_columns: 12,
+        min_rows: 1,
+      };
+    }
+
     connectedCallback() {
       if (this._config && !this._rafId) this._loop();
     }

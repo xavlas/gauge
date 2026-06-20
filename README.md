@@ -1,6 +1,6 @@
 # Jauge Vintage
 
-Une carte Lovelace personnalisée pour Home Assistant qui affiche un thermomètre animé façon écran TFT : un fichier JS unique, sans étape de build, entièrement configurable en YAML.
+Une carte Lovelace personnalisée pour Home Assistant qui affiche un thermomètre animé façon jauge vintage : un fichier JS unique, sans étape de build, entièrement configurable en YAML.
 
 ![screenshot](docs/preview.png)
 
@@ -22,6 +22,13 @@ Une carte Lovelace personnalisée pour Home Assistant qui affiche un thermomètr
    URL: /local/jauge-vintage-card.js   Type: Module JavaScript
 3. Ajouter la carte: type: custom:jauge-vintage-card
 ```
+
+## Réduire la largeur
+
+Deux façons de contrôler la largeur de la carte, selon ta vue Lovelace :
+
+- **Vue "Sections"** : la carte expose `getGridOptions()`, donc le bouton de mise en page (icône de redimensionnement sur la carte en mode édition) est disponible — utilise-le pour réduire le nombre de colonnes occupées, ou ajoute manuellement `grid_options:` dans la config YAML de la carte (ex. `grid_options: { columns: 6 }`).
+- **Vue "Masonry" (classique) ou tout autre contexte** : utilise l'option `max_width` ci-dessous (en px), qui centre et limite la carte indépendamment du layout du tableau de bord.
 
 ## Configuration
 
